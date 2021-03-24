@@ -56,7 +56,7 @@ function getSaulQuote(){
    });
 }
 function getRandomQuote(){
-   fetch("https://www.breakingbadapi.com/api/quote/random?series=Better+Call+Saul")
+   fetch("https://www.breakingbadapi.com/api/quote/random")
    .then(function (resp) {
       return resp.json();
    }) // Convert data to json
