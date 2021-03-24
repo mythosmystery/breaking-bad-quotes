@@ -2,6 +2,8 @@ var author1El = $("#author1");
 var quote1El = $("#quote1");
 var author2El = $("#author2");
 var quote2El = $("#quote2");
+var author3El = $("#author3");
+var quote3El = $("#quote3")
 
 var quoteAuthor;
 var quote;
@@ -9,6 +11,7 @@ var quoteId;
 
 getJesseQuote();
 getSaulQuote();
+getRandomQuote();
 
 function getJesseQuote(){
    fetch("https://www.breakingbadapi.com/api/quote/random?author=Jesse+Pinkman")
@@ -52,5 +55,25 @@ function getSaulQuote(){
       // catch any errors
    });
 }
+function getRandomQuote(){
+   fetch("https://www.breakingbadapi.com/api/quote/random")
+   .then(function (resp) {
+      return resp.json();
+   }) // Convert data to json
+   .then(function (data) {
+      quoteAuthor = data[0].author;
+      quote = data[0].quote;
+      quoteId = data[0].quote_id;
 
+      console.log(data);
+      console.log(quote);
+      console.log(quoteAuthor);
+      console.log(quoteId);
+      author3El.text(quoteAuthor);
+      quote3El.text(quote);
+   })
+   .catch(function () {
+      // catch any errors
+   });
+}
 
